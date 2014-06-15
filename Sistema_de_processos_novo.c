@@ -11,11 +11,11 @@ int g_tam, g_ID;
 typedef struct reg_processo
 {
     char pessoa[30];
-	char endereco[30];
+	char endereco[255];
 	char spmerc[30];
 	int identidade;
 	int tel;
-	int valor;
+	float valor;
 	int data;
 	int ID;
 
@@ -28,17 +28,24 @@ typedef struct no
 	struct no *prox;
 }No;
 
+///indice de funções
+void inicia(No *Pilha);
+int teste_vazia(No *Pilha);
+int coleta_dados(processo *prc);
+int menu();
+
 ///FUNÇÂO PRINCIPAL
 int main()
 {
+    int menu();
     return 0;
 }
 
-void menu()
+int menu()
 {
     int op;
 
-    while(op>=1 && op<=9)
+    while(1)
     {
         system("cls");
         printf("\t  =========================\n");
@@ -52,7 +59,7 @@ void menu()
         printf("\t5. Tamanho da Pilha;\n");
         printf("\t6. Apagar Pilha;\n");
         printf("\t7. Sair.\n");
-        scanf("%d", &op);
+        scanf("%i", &op);
         switch(op)
         {
         case 1:
@@ -81,12 +88,12 @@ void menu()
             }
         case 7:
             {
+                return 0;
                 break;
             }
         default:
             {
                 printf("Comando invalido, por favor escolha uma opcao.\n\n");
-                system("Pause");
             }
         }
     }
@@ -106,4 +113,22 @@ int teste_vazia(No *Pilha){ // Testa se a pilha está vazia. Se o primeiro elemen
 		return 1;
 	else
 		return 0;
+}
+
+int coleta_dados(processo *prc)
+{
+    printf("Digite o Nome do cliente: ");
+    scanf("%30[^\n]",prc->pessoa);
+    printf("Digite o endere%co do cliente: ",135);
+    scanf("%30[^\n]",prc->endereco);
+    printf("Digite a identidade do cliente: ");
+    scanf("%i",prc->identidade);
+    printf("Digite o Supermercado credor: ");
+    scanf("%30[^\n]",prc->spmerc);
+    printf("Digite o telefone do cliente: ");
+    scanf("%i",prc->tel);
+    printf("Digite o valor do cheque: ");
+    scanf("%2.f",prc->valor);
+    printf("Digite a data do cheque: ");
+    scanf("%i",prc->data);
 }
