@@ -1,0 +1,13 @@
+Projeto
+imagine que você trabalha no setor jurídico de uma rede super-mercados.
+simplificadamente, o seu serviço é resolver processos que seram passados pelo seu chefe para você. estes processos
+tratam de cheques que voltaram do banco , isto é, tratam de cheques que deram cheque sem fundo para pagar alguma
+compra em algum super-mercado da grande rede.
+seu chefe ao te passar um serviçota dá as informações referentes ao precesso. No caso as informações são: nome, endereço, 
+identidade e telefone do cliente; valor e data dos cheques e o nome do supermercado que o cliente passou o cheque.
+Alem disso cada processo deve possuir um identificador único.
+Os precessos são organizados em uma pilha. Você executa sempre o serviço que está no topo da pilha, só que esta pilha
+não é uma pilha comum, ela tem prioridade relacionada ao valor do cheque. O precesso que estiver relacionado
+ao valor de cheque mais alto fica no topo da pilha e o que estiver relacionado com valor mais baixo fica na base da pilha
+caso algum dos super-mercados esteja precisando muito de dinheiro, seu chefe entrará em contato com você e te avisará
+este fato, neste caso você terá que rearrumar a pilha colocando...
