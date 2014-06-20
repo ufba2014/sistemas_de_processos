@@ -19,9 +19,66 @@ void ini_fila() //FUNÇÂO QUE INICIA A FILA
   gancho = aux; // aux é igual a primeiro elemnto da pilha.
 }
 
+/// ÍNDICE DE FUNÇÔES DO PROGRAMA
+
+int menu(void);
+
 
 int main(void) //FUNÇÂO PRINCIPAL
 {
+  menu();
   system("pause");
   return 0;
+}
+
+int menu(void)
+{
+  int op;
+
+  do
+  {
+    system("cls");
+    puts("\tSISTEMA DE PROCESSOS");
+    puts("");
+    puts("\t1 - Adicionar processo");
+    puts("\t2 - Consultar Processo");
+    puts("\t3 - Mostrar primeiro");
+    puts("\t4 - Remove Processo");
+    puts("\t5 - Dar prioridade");
+    puts("\t6 - Sair");
+    printf("\nDigite a op%c%co: ",135,198);
+    scanf("%i",&op);
+    switch(op)
+    {
+      case 1:
+        {
+
+        }
+      case 2:
+        {
+
+        }
+      case 3:
+        {
+
+        }
+      case 4:
+        {
+
+        }
+      case 5:
+        {
+
+        }
+      case 6:
+        {
+          return (0);
+        }
+      default:
+        {
+          printf("\tOp%c%co inv%clida\n",135, 198, 160);
+          system("pause");
+        }
+    }
+  }while(1);
 }
