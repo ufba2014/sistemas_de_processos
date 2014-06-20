@@ -3,7 +3,7 @@
 
 struct cli_Dados // ESTRUTURA DOS DADOS DOS CLIENTES
 {
-  char nome[30],endereco[30],sup_Merc[30];
+  char nome[50],endereco[50],sup_Merc[50];
   int ident, telefone, id, data;
   float valor;
   struct cli_Dados *prox; // VAI APONTAR PARA O PROXIMO ELEMENTO DA ESTRUTURA
@@ -69,7 +69,7 @@ int menu(void)
         }
       case 2:
         {
-	  if(gancho->prox == (struct cli_Dados*)0)
+if(gancho->prox == (struct cli_Dados*)0)
             {
               printf("N%co existem Procesos\n",198);
             }
@@ -156,30 +156,35 @@ void insere() //FUNÇÃO QUE INSERE ELEMENTO NA FILA
   system("cls");
   printf("\nNovo processo: ID.%d", novo->id);
   printf("\nNome do Cliente: ");
-  scanf("%s", novo->nome);
+  fflush(stdin);
+  gets(novo->nome);
   printf("\nEndere%co do Cliente: ",135);
-  scanf("%s", novo->endereco);
+  gets(novo->endereco);
   printf("\nIdentidade do Cliente: ");
   scanf("%d", &novo->ident);
+  fflush(stdin);
   printf("\nTelefone do Cliente: ");
   scanf("%d", &novo->telefone);
+  fflush(stdin);
   printf("\nValor do Cheque: ");
   scanf("%f", &novo->valor);
+  fflush(stdin);
   printf("\nData do Cheque: ");
   scanf("%d", &novo->data);
+  fflush(stdin);
   printf("\nNome do Supermercado: ");
-  scanf("%s", novo->sup_Merc);
+  gets(novo->sup_Merc);
   novo->prox=gancho; //novo recebe o valor de memoria da estrutura anterior anterior
   gancho = novo; //gancho agora recebe a valor de memoria da nova insercao
 
   system("cls");
 
-	printf("\nProcesso Registrado!\n");
-	system("pause");
+printf("\nProcesso Registrado!\n");
+system("pause");
 }
 
 void most_prim(struct cli_Dados *posicao) //FFUNÇÂO QUE RECEBE COMO ARGUMENTO O ENDEREÇO DE MEMORIA DO ULTIMO ELEMENTO A SER
-{                                         //INSERIDO
+{ //INSERIDO
   system("cls");
   printf("ID do processo: %i\n",posicao->id);
   printf("Nome: %s\n",posicao->nome);
@@ -209,7 +214,7 @@ void most_todas(struct cli_Dados *posicao) //FUNÇÃO QUE IRÁ EXIBIR TODOS OS P
 }
 
 void most_ult(struct cli_Dados *posicao) //FUNÇÃO QUE IRÁ EXIBIR O ULTIMO ELEMENTO DA FILA, OU SEJA O PRIMEIRO INSERIDO
-{         //A CONDIÇÃO VAI COMPARAR CADA ELEMENTO DA FILA A NULO, ATÉ CHEGAR A BASE, QUE É O UNICO QUE APONTA PARA NULO
+{ //A CONDIÇÃO VAI COMPARAR CADA ELEMENTO DA FILA A NULO, ATÉ CHEGAR A BASE, QUE É O UNICO QUE APONTA PARA NULO
   while(posicao->prox!= (struct cli_Dados*)0)
   {
   struct cli_Dados *tmp = posicao->prox;//Um ponteiro tmp criado para auxiliar na troca de valores
