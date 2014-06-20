@@ -58,31 +58,36 @@ int menu(void)
       case 1:
         {
           insere();
+          break;
         }
       case 2:
         {
-
+          break;
         }
       case 3:
         {
           most_prim(gancho); //PASSO O ENDEREÇO DE MEMORIA DA ULTIMA ESTRUTURA A SER INSERIDA
+          break;
         }
       case 4:
         {
+          break;
 
         }
       case 5:
         {
-
+          break;
         }
       case 6:
         {
           return (0);
+          break;
         }
       default:
         {
           printf("\tOp%c%co inv%clida\n",135, 198, 160);
           system("pause");
+          break;
         }
     }
   }while(1);
@@ -93,12 +98,12 @@ void insere() //FUNÇÃO QUE INSERE ELEMENTO NA FILA
   struct cli_Dados *aux; //Ponteiro local do tipo cli_Dados
   struct cli_Dados *novo = (struct cli_Dados*) malloc(sizeof(struct cli_Dados)); //Aloca um espaço na memoria pra um novo alemento
 
-  novo->id = tam + 1; //Como o id dos processos começara de 1 e tam de 0, cada processo novo terá um id igual ao numero de processos da fila mais um
+  novo->id = ++tam; //Como o id dos processos começara de 1 e tam de 0, cada processo novo terá um id igual ao numero de processos da fila mais um
   //As linhas a seguir se tratam do cadastro do elemento novo a ser inserido, campo por campo, lembrando que nas strings não é nescessario o "&"
   printf("\nNovo processo: ID.%d", novo->id);
   printf("\nNome do Cliente: ");
   scanf("%s", novo->nome);
-  printf("\nEndereço do Cliente: ");
+  printf("\nEndere%co do Cliente: ",135);
   scanf("%s", novo->endereco);
   printf("\nIdentidade do Cliente: ");
   scanf("%d", &novo->ident);
@@ -116,6 +121,7 @@ void insere() //FUNÇÃO QUE INSERE ELEMENTO NA FILA
   system("cls");
 
 	printf("\nProcesso Registrado!\n");
+	system("pause");
 }
 
 void most_prim(struct cli_Dados *posicao) //FFUNÇÂO QUE RECEBE COMO ARGUMENTO O ENDEREÇO DE MEMORIA DO ULTIMO ELEMENTO A SER
