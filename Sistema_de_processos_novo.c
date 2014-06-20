@@ -193,9 +193,9 @@ void most_prim(struct cli_Dados *posicao) //FFUNÇÂO QUE RECEBE COMO ARGUMENTO 
 
 void most_todas(struct cli_Dados *posicao) //FUNÇÃO QUE IRÁ EXIBIR TODOS OS PROCESSOS CONTIDOS NA ESTRUTURA
 {//A CONDIÇÃO VAI COMPARAR CADA ELEMENTO DA FILA A NULO, E IRÁ EXIBI-LOS, ATÉ O ELEMENTO BASE QUE É O UNICO NULO
+  system("cls");
   while(posicao->prox!= (struct cli_Dados*)0){
   struct cli_Dados *tmp = posicao->prox;//Um ponteiro tmp criado para auxiliar na troca de valores, sempre recebendo o elemento seguinte a ser exibido
-  system("cls");
   printf("ID do processo: %i\n",posicao->id);
   printf("Nome: %s\n",posicao->nome);
   printf("Endere%co: %s\n",135, posicao->endereco);
@@ -215,6 +215,7 @@ void most_ult(struct cli_Dados *posicao) //FUNÇÃO QUE IRÁ EXIBIR O ULTIMO ELE
   struct cli_Dados *tmp = posicao->prox;//Um ponteiro tmp criado para auxiliar na troca de valores
     if(tmp->prox==(struct cli_Dados*)0)
     {
+      system("cls");
       printf("ID do processo: %i\n",posicao->id);
       printf("Nome: %s\n",posicao->nome);
       printf("Endere%co: %s\n",135, posicao->endereco);
@@ -239,6 +240,7 @@ void consulta(struct cli_Dados *posicao)//FUNÇÃO QUE IRA CONSULTAR UM ELEMENTO
       while(posicao->prox!= (struct cli_Dados*)0){//Condição que ira percorrer todos os nós da estrutura
         struct cli_Dados *tmp = posicao->prox;
         if(posicao->id==i){//Condição que a cada nó percorrido irá comparar o id da posição ao id que o usuario solicitou
+            system("cls");
             printf("ID do processo: %i\n",posicao->id);//e se encontrar, exibir o processor na tela
             printf("Nome: %s\n",posicao->nome);
             printf("Endere%co: %s\n",135, posicao->endereco);
