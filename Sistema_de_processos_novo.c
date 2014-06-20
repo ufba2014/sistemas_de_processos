@@ -18,16 +18,18 @@ void ini_fila() //FUN��O QUE INICIA A FILA
   struct cli_Dados *aux; //Ponteiro local do tipo cli_Dados
   aux = (struct cli_Dados*) malloc(sizeof(struct cli_Dados)); //Aloca um espa�o na memoria para a variavel aux
   aux->prox = (struct cli_Dados *)0; //Inicia o primeiro elemento da fila como valor nulo
-  gancho = aux; // aux � igual a primeiro elemnto da pilha.
+  gancho = aux; // aux � igual a primeiro elemnto da pilha
 }
 
 /// �NDICE DE FUN��ES DO PROGRAMA
 
 int menu(void);
+void ini_fila();
 void insere();
 
 int main(void) //FUN��O PRINCIPAL
 {
+  ini_fila();
   menu();
   system("pause");
   return 0;
@@ -54,7 +56,7 @@ int menu(void)
     {
       case 1:
         {
-
+          insere();
         }
       case 2:
         {
@@ -107,21 +109,10 @@ void insere() //FUNÇÃO QUE INSERE ELEMENTO NA FILA
   scanf("%d", &novo->data);
   printf("\nNome do Supermercado: ");
   scanf("%s", novo->sup_Merc);
+  novo->prox=gancho; //novo recebe o valor de memoria da estrutura anterior anterior
+  gancho = novo; //gancho agora recebe a valor de memoria da nova insercao
 
   system("cls");
 
-  novo->prox = NULL; //Aponta o proximo elemento da fila para valor nulo
-
-  if(aux->prox == NULL) //Verifica se o aux->prox é o primeiro da fila, este que deverá ser nulo
-    aux->prox=novo; //Caso sim, vai igualar aux.prox a novo, que é o elemento a ser inserido
-  else{
-  struct cli_Dados *tmp = aux->prox; //Caso contrario, irá criar um novo ponteiro tmp que irá percorrer a fila em busca do primeiro elemento nulo
-
-    while(tmp->prox != NULL) //Condição para que tmp percorra a fila até achar o primeiro elemento nulo
-        tmp = tmp->prox; //Cada vez que tmp->prox for diferente de nulo, tmp será igual ao proximo elemente a ser comparado na fila
-
-    tmp->prox = novo;//Quando o primeiro elemento nulo for achado, tmp->prox vai ser igual ao elemento "novo" inserido pelo usuario
-	}
-	tam++;
-	printf("\nProcesso Registrado!");
+	printf("\nProcesso Registrado!\n");
 }
