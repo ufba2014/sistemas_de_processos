@@ -30,6 +30,7 @@ void most_prim(struct cli_Dados *posicao);
 void most_todas(struct cli_Dados *posicao);
 void most_ult(struct cli_Dados *posicao);
 void consulta(struct cli_Dados *posicao);
+void remove_ultimo(struct cli_Dados *posicao);
 
 int main(void) //FUN��O PRINCIPAL
 {
@@ -109,6 +110,15 @@ if(gancho->prox == (struct cli_Dados*)0)
         }
       case 5:
         {
+          if(gancho->prox == (struct cli_Dados*)0)
+            {
+              printf("N%co existem Procesos\n",198);
+            }
+          else
+          {
+            remove_ultimo(gancho);
+          }
+          system("pause");
           break;
         }
       case 6:
@@ -246,7 +256,7 @@ void consulta(struct cli_Dados *posicao)//FUNÇÃO QUE IRA CONSULTAR UM ELEMENTO
         struct cli_Dados *tmp = posicao->prox;
         if(posicao->id==i){//Condição que a cada nó percorrido irá comparar o id da posição ao id que o usuario solicitou
             system("cls");
-            printf("ID do processo: %i\n",posicao->id);//e se encontrar, exibir o processor na tela
+            printf("ID do processo: %i\n",posicao->id);//e se encontrar, exibir o processo na tela
             printf("Nome: %s\n",posicao->nome);
             printf("Endere%co: %s\n",135, posicao->endereco);
             printf("Identidade: %i\n", posicao->ident);
@@ -257,4 +267,11 @@ void consulta(struct cli_Dados *posicao)//FUNÇÃO QUE IRA CONSULTAR UM ELEMENTO
             }
         posicao = tmp;
         }
+}
+
+void remove_ultimo(struct cli_Dados *posicao) //FUNÇAO QUE REMOVE O ULTIMO ELEMENTO INSERIDO E RECEBE O ENDEREÇO DE MEMORIA
+{                                             //DE GANCHO
+  struct cli_Dados *tmp = posicao->prox;
+  free(gancho);//libera o espaço na memoria
+  gancho = tmp;//agora gancho retorna uma posição na pilha
 }
