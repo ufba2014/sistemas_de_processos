@@ -26,6 +26,7 @@ void ini_fila() //FUN��O QUE INICIA A FILA
 int menu(void);
 void ini_fila();
 void insere();
+void most_prim(struct cli_Dados *posicao);
 
 int main(void) //FUN��O PRINCIPAL
 {
@@ -64,7 +65,7 @@ int menu(void)
         }
       case 3:
         {
-
+          most_prim(gancho); //PASSO O ENDEREÇO DE MEMORIA DA ULTIMA ESTRUTURA A SER INSERIDA
         }
       case 4:
         {
@@ -115,4 +116,16 @@ void insere() //FUNÇÃO QUE INSERE ELEMENTO NA FILA
   system("cls");
 
 	printf("\nProcesso Registrado!\n");
+}
+
+void most_prim(struct cli_Dados *posicao) //FFUNÇÂO QUE RECEBE COMO ARGUMENTO O ENDEREÇO DE MEMORIA DO ULTIMO ELEMENTO A SER
+{                                         //INSERIDO
+  printf("ID do processo: %i\n",posicao->id);
+  printf("Nome: %s\n",posicao->nome);
+  printf("Endere%co: %s\n",135, posicao->endereco);
+  printf("Identidade: %i\n", posicao->ident);
+  printf("Telefone: %i\n",posicao->telefone);
+  printf("Credor: %s\n", posicao->sup_Merc);
+  printf("Valor: R$ %2.f\n", posicao->valor);
+  printf("Data do cheque: %i\n", posicao->data);
 }
