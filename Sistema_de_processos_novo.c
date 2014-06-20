@@ -28,7 +28,7 @@ void ini_fila();
 void insere();
 void most_prim(struct cli_Dados *posicao);
 void most_todas(struct cli_Dados *posicao);
-void most_ult(struct cli_Dados *posicao)
+void most_ult(struct cli_Dados *posicao);
 
 int main(void) //FUN��O PRINCIPAL
 {
@@ -68,7 +68,7 @@ int menu(void)
         }
       case 2:
         {
-
+          break;
         }
       case 3:
         {
@@ -86,9 +86,15 @@ int menu(void)
         }
       case 4:
         {
-          most_ult(gancho);
+          if(gancho->prox == (struct cli_Dados*)0)
+            {
+              printf("N%co existem Procesos\n",198);
+            }
+          else
+          {
+            most_ult(gancho);
+          }
           system("pause");
-          menu();
           break;
         }
       case 5:
@@ -193,8 +199,9 @@ void most_todas(struct cli_Dados *posicao) //FUNÇÃO QUE IRÁ EXIBIR TODOS OS P
 }
 
 void most_ult(struct cli_Dados *posicao) //FUNÇÃO QUE IRÁ EXIBIR O ULTIMO ELEMENTO DA FILA, OU SEJA O PRIMEIRO INSERIDO
-{//A CONDIÇÃO VAI COMPARAR CADA ELEMENTO DA FILA A NULO, ATÉ CHEGAR A BASE, QUE É O UNICO QUE APONTA PARA NULO
-  while(posicao->prox!= (struct cli_Dados*)0){
+{         //A CONDIÇÃO VAI COMPARAR CADA ELEMENTO DA FILA A NULO, ATÉ CHEGAR A BASE, QUE É O UNICO QUE APONTA PARA NULO
+  while(posicao->prox!= (struct cli_Dados*)0)
+  {
   struct cli_Dados *tmp = posicao->prox;//Um ponteiro tmp criado para auxiliar na troca de valores
     if(tmp->prox==(struct cli_Dados*)0)
     {
