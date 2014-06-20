@@ -28,6 +28,7 @@ void ini_fila();
 void insere();
 void most_prim(struct cli_Dados *posicao);
 void most_todas(struct cli_Dados *posicao);
+void most_ult(struct cli_Dados *posicao)
 
 int main(void) //FUN��O PRINCIPAL
 {
@@ -78,6 +79,9 @@ int menu(void)
         }
       case 4:
         {
+          most_ult(gancho);
+          system("pause");
+          menu();
           break;
         }
       case 5:
@@ -170,6 +174,25 @@ void most_todas(struct cli_Dados *posicao) //FUNÇÃO QUE IRÁ EXIBIR TODOS OS P
   printf("Credor: %s\n", posicao->sup_Merc);
   printf("Valor: R$ %2.f\n", posicao->valor);
   printf("Data do cheque: %i\n\n\n", posicao->data);
+  posicao = tmp;
+  }
+}
+
+void most_ult(struct cli_Dados *posicao) //FUNÇÃO QUE IRÁ EXIBIR O ULTIMO ELEMENTO DA FILA, OU SEJA O PRIMEIRO INSERIDO
+{//A CONDIÇÃO VAI COMPARAR CADA ELEMENTO DA FILA A NULO, ATÉ CHEGAR A BASE, QUE É O UNICO QUE APONTA PARA NULO
+  while(posicao->prox!= (struct cli_Dados*)0){
+  struct cli_Dados *tmp = posicao->prox;//Um ponteiro tmp criado para auxiliar na troca de valores
+    if(tmp->prox==(struct cli_Dados*)0)
+    {
+      printf("ID do processo: %i\n",posicao->id);
+      printf("Nome: %s\n",posicao->nome);
+      printf("Endere%co: %s\n",135, posicao->endereco);
+      printf("Identidade: %i\n", posicao->ident);
+      printf("Telefone: %i\n",posicao->telefone);
+      printf("Credor: %s\n", posicao->sup_Merc);
+      printf("Valor: R$ %2.f\n", posicao->valor);
+      printf("Data do cheque: %i\n\n\n", posicao->data);
+    }
   posicao = tmp;
   }
 }
