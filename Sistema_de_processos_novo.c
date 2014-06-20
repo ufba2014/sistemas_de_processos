@@ -72,9 +72,16 @@ int menu(void)
         }
       case 3:
         {
-          most_prim(gancho); //PASSO O ENDEREÇO DE MEMORIA DA ULTIMA ESTRUTURA A SER INSERIDA
+          if(gancho->prox == (struct cli_Dados*)0)
+            {
+              printf("N%co existem Procesos\n",198);
+            }
+          else
+            {
+              most_prim(gancho); //PASSO O ENDEREÇO DE MEMORIA DA ULTIMA ESTRUTURA A SER INSERIDA
+
+            }
           system("pause");
-          menu();
           break;
         }
       case 4:
@@ -98,7 +105,14 @@ int menu(void)
         }
       case 8:
         {
-          most_todas(gancho);
+          if(gancho->prox == (struct cli_Dados*)0)
+            {
+              printf("N%co existem Procesos\n",198);
+            }
+          else
+          {
+            most_todas(gancho);
+          }
           system("pause");
           break;
         }
