@@ -141,6 +141,7 @@ void insere() //FUNÇÃO QUE INSERE ELEMENTO NA FILA
 
 void most_prim(struct cli_Dados *posicao) //FFUNÇÂO QUE RECEBE COMO ARGUMENTO O ENDEREÇO DE MEMORIA DO ULTIMO ELEMENTO A SER
 {                                         //INSERIDO
+  system("cls");
   printf("ID do processo: %i\n",posicao->id);
   printf("Nome: %s\n",posicao->nome);
   printf("Endere%co: %s\n",135, posicao->endereco);
@@ -149,4 +150,5 @@ void most_prim(struct cli_Dados *posicao) //FFUNÇÂO QUE RECEBE COMO ARGUMENTO 
   printf("Credor: %s\n", posicao->sup_Merc);
   printf("Valor: R$ %2.f\n", posicao->valor);
   printf("Data do cheque: %i\n", posicao->data);
+  system("pause");
 }
