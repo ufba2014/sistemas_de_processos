@@ -150,5 +150,4 @@ void most_prim(struct cli_Dados *posicao) //FFUNÇÂO QUE RECEBE COMO ARGUMENTO 
   printf("Credor: %s\n", posicao->sup_Merc);
   printf("Valor: R$ %2.f\n", posicao->valor);
   printf("Data do cheque: %i\n", posicao->data);
-  system("pause");
 }
