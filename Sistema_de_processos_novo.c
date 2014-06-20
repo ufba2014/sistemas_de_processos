@@ -29,6 +29,7 @@ void insere();
 void most_prim(struct cli_Dados *posicao);
 void most_todas(struct cli_Dados *posicao);
 void most_ult(struct cli_Dados *posicao);
+void consulta(struct cli_Dados *posicao);
 
 int main(void) //FUN��O PRINCIPAL
 {
@@ -68,6 +69,15 @@ int menu(void)
         }
       case 2:
         {
+	  if(gancho->prox == (struct cli_Dados*)0)
+            {
+              printf("N%co existem Procesos\n",198);
+            }
+          else
+          {
+            consulta(gancho);
+          }
+          system("pause");
           break;
         }
       case 3:
@@ -216,4 +226,28 @@ void most_ult(struct cli_Dados *posicao) //FUNÇÃO QUE IRÁ EXIBIR O ULTIMO ELE
     }
   posicao = tmp;
   }
+}
+
+void consulta(struct cli_Dados *posicao)//FUNÇÃO QUE IRA CONSULTAR UM ELEMENTO PEDIDO PELO USUARIO PELO ID E IRA EXIBIR
+{
+    int i;//Variavel local criada para receber o id do usuario
+    printf("\nInforme o ID do processo: ");
+    scanf("%d", &i);
+    if (i>tam){//Condiçao para alertar ao usuario caso o ID digitado seja maior que o numero de processos na fila
+        printf("ID invalido!\n");
+    }
+      while(posicao->prox!= (struct cli_Dados*)0){//Condição que ira percorrer todos os nós da estrutura
+        struct cli_Dados *tmp = posicao->prox;
+        if(posicao->id==i){//Condição que a cada nó percorrido irá comparar o id da posição ao id que o usuario solicitou
+            printf("ID do processo: %i\n",posicao->id);//e se encontrar, exibir o processor na tela
+            printf("Nome: %s\n",posicao->nome);
+            printf("Endere%co: %s\n",135, posicao->endereco);
+            printf("Identidade: %i\n", posicao->ident);
+            printf("Telefone: %i\n",posicao->telefone);
+            printf("Credor: %s\n", posicao->sup_Merc);
+            printf("Valor: R$ %2.f\n", posicao->valor);
+            printf("Data do cheque: %i\n\n\n", posicao->data);
+            }
+        posicao = tmp;
+        }
 }
