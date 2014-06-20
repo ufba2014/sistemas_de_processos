@@ -97,6 +97,7 @@ int menu(void)
           most_todas(gancho);
           system("pause");
           menu();
+          break;
         }
       case 9:
         {
