@@ -48,9 +48,12 @@ int menu(void)
     puts("\t1 - Adicionar processo");
     puts("\t2 - Consultar Processo");
     puts("\t3 - Mostrar primeiro");
-    puts("\t4 - Remove Processo");
-    puts("\t5 - Dar prioridade");
-    puts("\t6 - Sair");
+    puts("\t4 - Mostrar ultimo");
+    puts("\t5 - Remover ultimo processo inserido");
+    puts("\t6 - Remover processo por ID");
+    puts("\t7 - Dar prioridade");
+    puts("\t8 - Mostrar todos os processos");
+    puts("\t9 - Sair");
     printf("\nDigite a op%c%co: ",135,198);
     scanf("%i",&op);
     switch(op)
@@ -58,36 +61,48 @@ int menu(void)
       case 1:
         {
           insere();
+          menu();
           break;
         }
       case 2:
         {
-          break;
+
         }
       case 3:
         {
           most_prim(gancho); //PASSO O ENDEREÇO DE MEMORIA DA ULTIMA ESTRUTURA A SER INSERIDA
+          system("pause");
+          menu();
           break;
         }
       case 4:
         {
-          break;
 
         }
       case 5:
         {
-          break;
+
         }
       case 6:
         {
+
+        }
+      case 7:
+        {
+
+        }
+      case 8:
+        {
+
+        }
+      case 9:
+        {
           return (0);
-          break;
         }
       default:
         {
           printf("\tOp%c%co inv%clida\n",135, 198, 160);
           system("pause");
-          break;
         }
     }
   }while(1);
