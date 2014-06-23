@@ -7,6 +7,7 @@ struct cli_Dados // ESTRUTURA DOS DADOS DOS CLIENTES
   int ident, telefone, id, data;
   float valor;
   struct cli_Dados *prox; // VAI APONTAR PARA O PROXIMO ELEMENTO DA ESTRUTURA
+  struct cli_Dados *ante; // VAI APONTAR PARA O ELEMENTO ANTERIOR DA ESTRUTURA
 };
 
 struct cli_Dados *gancho; //gancho funciona como uma transitividade para chamar o proximo item.
@@ -18,6 +19,7 @@ void ini_fila() //FUN��O QUE INICIA A FILA
   struct cli_Dados *aux; //Ponteiro local do tipo cli_Dados
   aux = (struct cli_Dados*) malloc(sizeof(struct cli_Dados)); //Aloca um espa�o na memoria para a variavel aux
   aux->prox = (struct cli_Dados *)0; //Inicia o primeiro elemento da fila como valor nulo
+  aux->ante = (struct cli_Dados *)0; //Inicia o primeiro elemento da fila como valor nulo
   gancho = aux; // aux � igual a primeiro elemnto da pilha
 }
 
@@ -65,7 +67,6 @@ int menu(void)
       case 1:
         {
           insere();
-          menu();
           break;
         }
       case 2:
@@ -156,7 +157,7 @@ if(gancho->prox == (struct cli_Dados*)0)
   }while(1);
 }
 
-void insere() //FUNÇÃO QUE INSERE ELEMENTO NA FILA
+void insere(struct cli_Dados *posicao) //FUNÇÃO QUE INSERE ELEMENTO NA FILA
 {
   struct cli_Dados *aux; //Ponteiro local do tipo cli_Dados
   struct cli_Dados *novo = (struct cli_Dados*) malloc(sizeof(struct cli_Dados)); //Aloca um espaço na memoria pra um novo alemento
@@ -185,11 +186,14 @@ void insere() //FUNÇÃO QUE INSERE ELEMENTO NA FILA
   printf("\nNome do Supermercado: ");
   gets(novo->sup_Merc);
   novo->prox=gancho; //novo recebe o valor de memoria da estrutura anterior anterior
+  gancho->ante = novo;
   gancho = novo; //gancho agora recebe a valor de memoria da nova insercao
 
   system("cls");
 
 printf("\nProcesso Registrado!\n");
+
+///printf("%i, %i",gancho->prox->id, gancho ->prox->ante->id);
 system("pause");
 }
 
