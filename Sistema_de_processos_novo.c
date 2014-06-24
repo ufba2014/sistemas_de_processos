@@ -33,6 +33,7 @@ void most_todas(struct cli_Dados *posicao);
 void most_ult(struct cli_Dados *posicao);
 void consulta(struct cli_Dados *posicao);
 void remove_ultimo(struct cli_Dados *posicao);
+void remove_id(struct cli_Dados *posicao);
 
 int main(void) //FUN��O PRINCIPAL
 {
@@ -118,12 +119,13 @@ if(gancho->prox == (struct cli_Dados*)0)
           else
           {
             remove_ultimo(gancho);
+            system("pause");
           }
-          system("pause");
           break;
         }
       case 6:
         {
+          remove_id(gancho);
           break;
         }
       case 7:
@@ -159,7 +161,6 @@ if(gancho->prox == (struct cli_Dados*)0)
 
 void insere(struct cli_Dados *posicao) //FUNÇÃO QUE INSERE ELEMENTO NA FILA
 {
-  struct cli_Dados *aux; //Ponteiro local do tipo cli_Dados
   struct cli_Dados *novo = (struct cli_Dados*) malloc(sizeof(struct cli_Dados)); //Aloca um espaço na memoria pra um novo alemento
 
   novo->id = ++tam; //Como o id dos processos começara de 1 e tam de 0, cada processo novo terá um id igual ao numero de processos da fila mais um
@@ -185,16 +186,16 @@ void insere(struct cli_Dados *posicao) //FUNÇÃO QUE INSERE ELEMENTO NA FILA
   fflush(stdin);
   printf("\nNome do Supermercado: ");
   gets(novo->sup_Merc);
+  novo->ante = (struct cli_Dados*)0;
   novo->prox=gancho; //novo recebe o valor de memoria da estrutura anterior anterior
   gancho->ante = novo;
   gancho = novo; //gancho agora recebe a valor de memoria da nova insercao
-
   system("cls");
 
-printf("\nProcesso Registrado!\n");
+  printf("\nProcesso Registrado!\n");
 
-///printf("%i, %i",gancho->prox->id, gancho ->prox->ante->id);
-system("pause");
+  ///printf("%i, %i",gancho->prox->id, gancho ->prox->ante->id);
+  system("pause");
 }
 
 void most_prim(struct cli_Dados *posicao) //FFUNÇÂO QUE RECEBE COMO ARGUMENTO O ENDEREÇO DE MEMORIA DO ULTIMO ELEMENTO A SER
@@ -279,3 +280,39 @@ void remove_ultimo(struct cli_Dados *posicao) //FUNÇAO QUE REMOVE O ULTIMO ELEM
   free(gancho);//libera o espaço na memoria
   gancho = tmp;//agora gancho retorna uma posição na pilha
 }
+
+void remove_id(struct cli_Dados *posicao)//REMOVE UM ITEM PELO NUMERO DE ID
+{
+  int i;//Variavel local criada para receber o id do usuario
+  struct cli_Dados *aux_prox;//variavel que vai axiliar a apontar para um item acima
+  struct cli_Dados *aux_ante;//variavel que vai axiliar a apontar para um item abaixo
+  struct cli_Dados *aux;//auxilia no ciclo while
+  printf("\nInforme o ID do processo: ");
+  scanf("%d", &i);
+
+  if (i>tam) //Condiçao para alertar ao usuario caso o ID digitado seja maior que o numero de processos na fila
+    {
+      printf("ID invalido!\n");
+    }
+  if (posicao->id == i) //se o item for o topo da pilha ele será removido
+  {
+    remove_ultimo(posicao);
+  }
+  else // senão entra no cicli de repetição aterando endereços de memoria e removendo o item excolhido
+  {
+    while(posicao->prox != (struct cli_Dados*)0)
+    {
+      aux = posicao;
+      if(posicao->id == i)
+      {
+        aux_ante = aux->ante; //guarda o valor acima da posição
+        aux_prox = aux->prox; //guarda o valor abaixo da posição
+        posicao->prox->ante = aux_ante; // a posição abaixo que aponta para posição vai apontar para o valor acima da posição
+        posicao->ante->prox = aux_prox; // a posição acima que aponta para a posição vai apontar para o valor abaixo da posição
+      }
+      posicao = aux->prox; //condição de parada
+    }
+  }
+  system("pause");
+}
+
