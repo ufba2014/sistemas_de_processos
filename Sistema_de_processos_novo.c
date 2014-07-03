@@ -56,8 +56,8 @@ int menu(void)
     puts("");
     puts("\t1 - Adicionar processo");
     puts("\t2 - Consultar Processo");
-    puts("\t3 - Mostrar primeiro");
-    puts("\t4 - Mostrar o topo");
+    puts("\t3 - Mostrar processo do topo");
+    puts("\t4 - Mostrar processo da base");
     puts("\t5 - Remover o topo da pilha");
     puts("\t6 - Remover processo por ID");
     puts("\t7 - Dar prioridade");
@@ -74,9 +74,9 @@ int menu(void)
         }
       case 2:
         {
-if(gancho->prox == (struct cli_Dados*)0)
+          if(gancho->prox == (struct cli_Dados*)0)
             {
-              printf("N%co existem Procesos\n",198);
+              printf("N%co existem Processos\n",198);
             }
           else
           {
@@ -89,7 +89,7 @@ if(gancho->prox == (struct cli_Dados*)0)
         {
           if(gancho->prox == (struct cli_Dados*)0)
             {
-              printf("N%co existem Procesos\n",198);
+              printf("N%co existem Processos\n",198);
             }
           else
             {
@@ -103,7 +103,7 @@ if(gancho->prox == (struct cli_Dados*)0)
         {
           if(gancho->prox == (struct cli_Dados*)0)
             {
-              printf("N%co existem Procesos\n",198);
+              printf("N%co existem Processos\n",198);
             }
           else
           {
@@ -116,7 +116,7 @@ if(gancho->prox == (struct cli_Dados*)0)
         {
           if(gancho->prox == (struct cli_Dados*)0)
             {
-              printf("N%co existem Procesos\n",198);
+              printf("N%co existem Processos\n",198);
             }
           else
           {
@@ -138,7 +138,7 @@ if(gancho->prox == (struct cli_Dados*)0)
         {
           if(gancho->prox == (struct cli_Dados*)0)
             {
-              printf("N%co existem Procesos\n",198);
+              printf("N%co existem Processos\n",198);
             }
           else
           {
@@ -234,7 +234,7 @@ void most_prim(struct cli_Dados *posicao) //FFUNÇÂO QUE RECEBE COMO ARGUMENTO 
   printf("Telefone: %i\n",posicao->telefone);
   printf("Credor: %s\n", posicao->sup_Merc);
   printf("Valor: R$ %2.f\n", posicao->valor);
-  printf("Data do cheque: %i\n", posicao->data);
+  printf("Data do cheque: %i\n\n\n", posicao->data);
 }
 
 void most_todas(struct cli_Dados *posicao) //FUNÇÃO QUE IRÁ EXIBIR TODOS OS PROCESSOS CONTIDOS NA ESTRUTURA
@@ -250,7 +250,6 @@ void most_todas(struct cli_Dados *posicao) //FUNÇÃO QUE IRÁ EXIBIR TODOS OS P
   printf("Credor: %s\n", posicao->sup_Merc);
   printf("Valor: R$ %2.f\n", posicao->valor);
   printf("Data do cheque: %i\n\n\n", posicao->data);
-  printf("%i\n",posicao->ante);
   posicao = tmp;
   }
 }
@@ -271,7 +270,6 @@ void most_ult(struct cli_Dados *posicao) //FUNÇÃO QUE IRÁ EXIBIR O ULTIMO ELE
       printf("Credor: %s\n", posicao->sup_Merc);
       printf("Valor: R$ %2.f\n", posicao->valor);
       printf("Data do cheque: %i\n\n\n", posicao->data);
-      printf("%i", posicao->ante->id);
     }
   posicao = tmp;
   }
@@ -303,7 +301,7 @@ void consulta(struct cli_Dados *posicao)//FUNÇÃO QUE IRA CONSULTAR UM ELEMENTO
 }
 
 void remove_ultimo(struct cli_Dados *posicao) //FUNÇAO QUE REMOVE O ULTIMO ELEMENTO INSERIDO E RECEBE O ENDEREÇO DE MEMORIA
-{                                             //DE GANCHO
+{ //DE GANCHO
   struct cli_Dados *tmp = posicao->prox;
   free(gancho);//libera o espaço na memoria
   gancho = tmp;//agora gancho retorna uma posição na pilha
