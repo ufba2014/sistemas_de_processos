@@ -36,6 +36,7 @@ void most_ult(struct cli_Dados *posicao);
 void consulta(struct cli_Dados *posicao);
 void remove_ultimo(struct cli_Dados *posicao);
 void remove_id(struct cli_Dados *posicao);
+void da_prio (struct cli_Dados *posicao);
 
 int main(void) //FUN��O PRINCIPAL
 {
@@ -132,6 +133,7 @@ int menu(void)
         }
       case 7:
         {
+          da_prio (gancho);
           break;
         }
       case 8:
@@ -340,6 +342,27 @@ void remove_id(struct cli_Dados *posicao)//REMOVE UM ITEM PELO NUMERO DE ID
       posicao = aux->prox; //condição de parada
     }
     --t;
+  }
+  system("pause");
+}
+
+void da_prio (struct cli_Dados *posicao)
+{
+  struct cli_Dados *aux;
+
+  char nome_Merc[50];
+  fflush(stdin);
+  printf("\nNome do Supermercado: ");
+  gets(nome_Merc);
+
+  while(posicao->prox != (struct cli_Dados*)0)
+  {
+    aux = posicao;
+    if(posicao->sup_Merc == nome_Merc)
+    {
+      printf("%s",posicao->sup_Merc);
+    }
+    posicao = aux->prox;
   }
   system("pause");
 }
