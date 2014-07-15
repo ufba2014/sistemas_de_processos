@@ -338,6 +338,7 @@ void remove_id(struct cli_Dados *posicao)//REMOVE UM ITEM PELO NUMERO DE ID
         aux_prox = aux->prox; //guarda o valor abaixo da posição
         posicao->prox->ante = aux_ante; // a posição abaixo que aponta para posição vai apontar para o valor acima da posição
         posicao->ante->prox = aux_prox; // a posição acima que aponta para a posição vai apontar para o valor abaixo da posição
+        free(posicao);
       }
       posicao = aux->prox; //condição de parada
     }
@@ -349,6 +350,9 @@ void remove_id(struct cli_Dados *posicao)//REMOVE UM ITEM PELO NUMERO DE ID
 void da_prio (struct cli_Dados *posicao)
 {
   struct cli_Dados *aux;
+  struct cli_Dados *tmp;
+  struct cli_Dados *aux_prox;//variavel que vai axiliar a apontar para um item acima
+  struct cli_Dados *aux_ante;//variavel que vai axiliar a apontar para um item abaixo
 
   char nome_Merc[50];
   fflush(stdin);
@@ -358,9 +362,20 @@ void da_prio (struct cli_Dados *posicao)
   while(posicao->prox != (struct cli_Dados*)0)
   {
     aux = posicao;
-    if(strcmp (posicao->sup_Merc,nome_Merc) == 0) 
+    if(strcmp (posicao->sup_Merc, nome_Merc)==0)
     {
-      printf("%s",posicao->sup_Merc);
+    tmp = posicao;
+
+      aux_ante = aux->ante; //guarda o valor acima da posição
+      aux_prox = aux->prox; //guarda o valor abaixo da posição
+
+      posicao->prox->ante = aux_ante; // a posição abaixo que aponta para posição vai apontar para o valor acima da posição
+      posicao->ante->prox = aux_prox; // a posição acima que aponta para a posição vai apontar para o valor abaixo da posição
+      free(posicao);
+
+      tmp->ante = gancho->ante;
+      tmp->prox = gancho;
+      gancho = tmp;
     }
     posicao = aux->prox;
   }
