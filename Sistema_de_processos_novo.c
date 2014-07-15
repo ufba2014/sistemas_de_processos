@@ -358,7 +358,7 @@ void da_prio (struct cli_Dados *posicao)
   while(posicao->prox != (struct cli_Dados*)0)
   {
     aux = posicao;
-    if(posicao->sup_Merc == nome_Merc)
+    if(strcmp (posicao->sup_Merc,nome_Merc) == 0) 
     {
       printf("%s",posicao->sup_Merc);
     }
