@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct cli_Dados // ESTRUTURA DOS DADOS DOS CLIENTES
 {
@@ -15,17 +16,17 @@ struct cli_Dados *gancho; //gancho funciona como uma transitividade para chamar 
 int tam; //VARIAVEL GLOBAL QUE VAI COMEÇAR EM 0 E SERÁ INCREMENTADA CADA VEZ QUE UM ELEMENTO FOR INSERIDO
 int t;
 
-void ini_fila() //FUN��O QUE INICIA A FILA
+void ini_fila() //FUN??O QUE INICIA A FILA
 {
   struct cli_Dados *aux; //Ponteiro local do tipo cli_Dados
-  aux = (struct cli_Dados*) malloc(sizeof(struct cli_Dados)); //Aloca um espa�o na memoria para a variavel aux
+  aux = (struct cli_Dados*) malloc(sizeof(struct cli_Dados)); //Aloca um espa?o na memoria para a variavel aux
   aux->prox = (struct cli_Dados *)0; //Inicia o primeiro elemento da fila como valor nulo
   aux->valor = 0;
   aux->ante = (struct cli_Dados *)0; //Inicia o primeiro elemento da fila como valor nulo
-  gancho = aux; // aux � igual a primeiro elemnto da pilha
+  gancho = aux; // aux ? igual a primeiro elemnto da pilha
 }
 
-/// �NDICE DE FUN��ES DO PROGRAMA
+/// ?NDICE DE FUN??ES DO PROGRAMA
 
 int menu(void);
 void ini_fila();
@@ -38,7 +39,7 @@ void remove_ultimo(struct cli_Dados *posicao);
 void remove_id(struct cli_Dados *posicao);
 void da_prio (struct cli_Dados *posicao);
 
-int main(void) //FUN��O PRINCIPAL
+int main(void) //FUN??O PRINCIPAL
 {
   ini_fila();
   menu();
